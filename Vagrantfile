@@ -10,6 +10,6 @@ Vagrant.configure("2") do |config|
   config.vm.box = "gusztavvargadr/ubuntu-desktop"
   config.vm.provider "virtualbox" do |vm|  
   vm.gui = true
-  config.vm.provision "shell", inline: "flet_setup.sh"
+  config.vm.provision "shell", privileged: false, path: "flet_setup.sh"
   end
 end
