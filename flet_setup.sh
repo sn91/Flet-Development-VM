@@ -1,26 +1,26 @@
 #!/bin/bash -e
-
+set -x
 # Update package lists
 sudo apt-get update
 
 # Install prerequisites
-sudo apt-get install -q -y python3.11 python3-pip git build-essential
+sudo apt-get install -q -y python3.12 python3-pip git build-essential
 
 # Install Poetry
-#if ! which poetry; then
- #     curl -sSL https://install.python-poetry.org | python3 -
-#fi
+if ! which poetry; then
+      curl -sSL https://install.python-poetry.org | python3 -
+fi
 
 # Extend PATH to also look at ~/.local/bin where Poetry is located
-#if ! grep poetry ~/.profile; then
+if ! grep poetry ~/.profile; then
     export PATH="/home/vagrant/.local/bin:$PATH"
 
       echo 'export PATH="~/home/vagrant/.local/bin:$PATH"' >> ~/.profile
-#fi
+fi
 
-# Use Python 3.11 for the virtual environment
+# Use Python 3.12 for the virtual environment
 cd /vagrant
-poetry env use python3.11 
+poetry env use python3.12 
 
 echo step1
 

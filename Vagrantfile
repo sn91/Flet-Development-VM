@@ -6,6 +6,8 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vm|  
   vm.gui = true
   # To have a smooth developer experience we enabled autologin
+  # TODO : Didable automatic screensaver
+
   config.vm.provision "shell", privileged: true, inline: "sed -i -e 's/#  AutomaticLoginEnable = true/AutomaticLoginEnable = true/' /etc/gdm3/custom.conf"
   config.vm.provision "shell", privileged: true, inline: "sed -i -e 's/#  AutomaticLogin = user1/AutomaticLogin = vagrant/' /etc/gdm3/custom.conf"
   config.vm.provision "shell", privileged: true, inline: "systemctl daemon-reload"
