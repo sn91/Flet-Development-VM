@@ -5,6 +5,11 @@ Vagrant.configure("2") do |config|
   config.vm.box = "gusztavvargadr/ubuntu-desktop-2404-lts"
   config.vm.provider "virtualbox" do |vm|  
   vm.gui = true
+  # To have a smooth developer experience we enabled autologin
+  config.vm.provision "shell", privileged: true, inline: "sed -i -e 's/#  AutomaticLoginEnable = true/AutomaticLoginEnable = true/' /etc/gdm3/custom.conf"
+  config.vm.provision "shell", privileged: true, inline: "sed -i -e 's/#  AutomaticLogin = user1/AutomaticLogin = vagrant/' /etc/gdm3/custom.conf"
+  config.vm.provision "shell", privileged: true, inline: "systemctl daemon-reload"
+  config.vm.provision "shell", privileged: true, inline: "systemctl restart gdm3"
   config.vm.provision "shell", privileged: false, path: "flet_setup.sh"
   end
 end
