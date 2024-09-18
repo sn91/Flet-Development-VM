@@ -22,29 +22,19 @@ fi
 cd /vagrant
 poetry env use python3.12 
 
-echo step1
-
 # Tools needed for Flutter installation
 which bash file mkdir rm
 
-echo step2
-
 #Installation of Flutter Prerequisites
 sudo apt upgrade -y
-echo "foo"
 sudo apt install -y curl git unzip xz-utils zip libglu1-mesa
 
-echo "foobar"
 # TODO combine this with the apt install line above
 sudo apt install -y \
       clang cmake git \
       ninja-build pkg-config \
       libgtk-3-dev liblzma-dev \
       libstdc++-12-dev
-
-
-echo step3
-
 
 # TODO: Make this idempotent
 # Download Flutter SDK 
@@ -53,7 +43,7 @@ if [ ! -f "flutter_linux_3.22.2-stable.tar.xz" ]; then
 fi
 # TODO: make the idempotent, don't extract if the archive is already extracted
 # TODO: Remove all debuging echo lines
-echo step4
+
 if [ ! -d "flutter" ]; then
 tar -xvJf flutter_linux_3.22.2-stable.tar.xz 
 fi
@@ -63,8 +53,6 @@ fi
 # Move Flutter to a permanent location 
 # TODO: Skip moving if flutter directory is already in place at /opt/flutter
 
-echo step5
-
 if [ ! -d "/opt/flutter" ]; then
   sudo mv flutter /opt/flutter
 fi
@@ -72,22 +60,16 @@ fi
 # TODO: make idempotent like extending PATH for poetry, also use .profile
 # Add Flutter to PATH 
 #echo 'export PATH=$PATH:/opt/flutter/bin' >> ~/.bashrc
-echo step6
 
 if ! grep -q ':/opt/flutter/bin' ~/.profile; then
   echo 'export PATH=$PATH:/opt/flutter/bin' >> ~/.profile
 fi
-echo step7
 
 # Source the updated bashrc (optional, but recommended for immediate use)
 source ~/.bashrc
-
-echo step8
 
 # Add Flet dependency to pyproject.toml
 #echo -e "[tool.poetry]\nname = \"flet_project\"\nversion = \"0.1.0\"\ndescription = \"Flet based application\"\n\n[tool.poetry.dependencies]\npython = \"^3.11\"\nflet = \"^0.22.0\" ">> pyproject.toml
 
 # Install dependencies
 poetry install --no-root
-
-echo step9
