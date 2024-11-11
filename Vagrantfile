@@ -1,7 +1,12 @@
 # TODO: Configure autologin for Ubuntu
 # TODO: Try to start a basic flet gui application in the VM
 Vagrant.configure("2") do |config|
-  #config.vm.box = "hashicorp/precise64"
+  # Dynamically allign number of core of the VMs with the host
+  # to speed up things as much as possible.
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--cpus", `#{RbConfig::CONFIG['host_os'] =~ /darwin/ ? 'sysctl -n hw.ncpu' : 'nproc'}`.chomp]
+    vb.customize ["modifyvm", :id, "--memory", 3096]
+  end
   config.vm.box = "gusztavvargadr/ubuntu-desktop-2404-lts"
   config.vm.provider "virtualbox" do |vm|  
   vm.gui = true
