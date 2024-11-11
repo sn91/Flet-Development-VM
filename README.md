@@ -1,4 +1,6 @@
 # Flet development VM
+![Example Flet App](media/exampleApp.png)
+
 
 This projects helps you to provide a reproducable virtual environment for the development of flet apps.
 It creates a Ubuntu 24.04 Desktop Virtual machine with Vagrant and VirtualBox. 
@@ -55,6 +57,7 @@ To run your Flet app your flet project directory do:
 
 ```
 $ cd /vagrant/example_flet_app
+$ poetry shell
 $ flet run fletapp.py
 ```
 
