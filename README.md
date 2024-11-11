@@ -24,7 +24,8 @@ $ vagrant up
 ```
 
 ### 4. Reprovision the VM
-If you want execute the provision steps again while the Vagrant VM is already up and running you have to use `vagrant provision` instead of `vagrant up`.
+If you want execute the provision steps again while the Vagrant VM is already up and running you have to use `vagrant provision` instead 
+of `vagrant up`.
 
 ```
 $ vagrant provision

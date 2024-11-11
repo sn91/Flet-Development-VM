@@ -11,7 +11,7 @@ def main(page: ft.Page):
         page.update()
 
     def plus_click(e):
-        txt_number.value = str(int(txt_number.value) + 1)y
+        txt_number.value = str(int(txt_number.value) + 1)
         page.update()
 
     page.add(

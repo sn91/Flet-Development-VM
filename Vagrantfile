@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", privileged: true, inline: "systemctl restart gdm3"
   config.vm.provision "shell", inline: <<-SHELL
       sudo apt update
-      sudo apt install libmpv-dev libmpv2
+      sudo apt install --yes libmpv-dev libmpv2
       sudo ln -s /usr/lib/x86_64-linux-gnu/libmpv.so /usr/lib/libmpv.so.1
     SHELL
   config.vm.provision "shell", privileged: false, path: "flet_setup.sh"
