@@ -5,6 +5,7 @@
 This projects helps you to provide a reproducable virtual environment for the development of flet apps.
 It creates a Ubuntu 24.04 Desktop Virtual machine with Vagrant and VirtualBox. 
 Setting up all Flet dependencies like Flutter and Poetry to be ready for use.
+This has been a part of my work at HolyPoly as Systems Engineer \(Working Student\). HolyPoly gave me permission to put this work under an Open Source license.
 
 1. Install Vagrant and VirtualBox.
 
