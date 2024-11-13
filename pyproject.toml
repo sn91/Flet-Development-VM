@@ -1,8 +1,9 @@
 [tool.poetry]
-name = "fungua"
+name = "flet_development_vm"
 version = "0.1.0"
 description = "Inventarize the contents of take-back packages"
 authors = ["Gunter Miegel <gunter.miegel@holypoly.co>"]
+package-mode = false
 #packages = [
 #    { include = "src" },
 #]
